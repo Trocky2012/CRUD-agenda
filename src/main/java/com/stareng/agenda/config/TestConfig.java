@@ -1,5 +1,6 @@
 package com.stareng.agenda.config;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -20,8 +21,10 @@ public class TestConfig implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Task t1 = new Task(null,"Lavar roupas.", new Date());
-		Task t2 = new Task(null,"Programar app", new Date());
+		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Task t1 = new Task(null,"Lavar roupas.", sdf.format(new Date()));
+		Task t2 = new Task(null,"Programar app", sdf.format(new Date()));
 		taskRepository.saveAll(Arrays.asList(t1,t2));
 	}
 

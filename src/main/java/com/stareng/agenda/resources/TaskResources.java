@@ -1,5 +1,6 @@
 package com.stareng.agenda.resources;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,25 @@ public class TaskResources {
 		task = service.update(id, task);
 		return ResponseEntity.ok().body(task);
 	}
+	
+	@GetMapping(value= "/addMonth")
+	public ResponseEntity<List<Task>> addMonth() throws ParseException{
+		List <Task> taskList = service.addMonth();
+		return ResponseEntity.ok().body(taskList);
+	}
+	
+	@GetMapping(value= "/addWeek")
+	public ResponseEntity<List<Task>> addWeek() throws ParseException{
+		List <Task> taskList = service.addWeek();
+		return ResponseEntity.ok().body(taskList);
+	}
+	
+	@GetMapping(value= "/addDay")
+	public ResponseEntity<List<Task>> addDay() throws ParseException{
+		List <Task> taskList = service.addDay();
+		return ResponseEntity.ok().body(taskList);
+	}
+	
+	
 
 }
